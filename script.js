@@ -160,6 +160,129 @@ const btnCerrarModalInferior =
 
 
 /* =========================================
+   CONVERTIR URL DE GOOGLE DRIVE
+========================================= */
+
+function convertirUrlImagen(url) {
+
+    if (!url) {
+
+        return "";
+
+    }
+
+
+    const valor =
+        url.trim();
+
+
+    /*
+       FORMATO:
+
+       https://drive.google.com/uc?id=ID
+    */
+
+    const coincidenciaId =
+        valor.match(
+            /[?&]id=([^&]+)/
+        );
+
+
+    if (coincidenciaId) {
+
+        return `https://drive.google.com/thumbnail?id=${coincidenciaId[1]}&sz=w1000`;
+
+    }
+
+
+    /*
+       FORMATO:
+
+       https://drive.google.com/file/d/ID/view
+    */
+
+    const coincidenciaArchivo =
+        valor.match(
+            /\/file\/d\/([^/]+)/
+        );
+
+
+    if (coincidenciaArchivo) {
+
+        return `https://drive.google.com/thumbnail?id=${coincidenciaArchivo[1]}&sz=w1000`;
+
+    }
+
+
+    /*
+       SI NO ES GOOGLE DRIVE
+    */
+
+    return valor;
+
+}
+
+
+/* =========================================
+   GENERAR IMAGEN
+========================================= */
+
+function generarImagenEquipo(
+    equipo,
+    clase = ""
+) {
+
+    const urlImagen =
+        convertirUrlImagen(
+            equipo["URL IMAGEN"]
+        );
+
+
+    if (!urlImagen) {
+
+        return `
+
+            <div class="imagen-placeholder">
+
+                IMAGEN DEL EQUIPO
+
+            </div>
+
+        `;
+
+    }
+
+
+    return `
+
+        <img
+            src="${urlImagen}"
+            alt="${
+                equipo["MARCA Y MODELO"] ||
+                "Equipo"
+            }"
+            class="imagen-real ${clase}"
+            onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+            "
+        >
+
+        <div
+            class="imagen-placeholder"
+            style="display:none;"
+        >
+
+            IMAGEN DEL EQUIPO
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
    PARSEAR CSV
 ========================================= */
 
@@ -296,6 +419,7 @@ function parseCSV(texto) {
 
 
     return filas;
+
 }
 
 
@@ -474,11 +598,9 @@ function mostrarEquipos(lista) {
 
                 <div class="imagen-equipo">
 
-                    <div class="imagen-placeholder">
-
-                        IMAGEN DEL EQUIPO
-
-                    </div>
+                    ${generarImagenEquipo(
+                        equipo
+                    )}
 
                 </div>
 
@@ -836,6 +958,16 @@ function mostrarComparacion() {
 
                 <th>
 
+                    <div class="imagen-comparacion">
+
+                        ${generarImagenEquipo(
+                            equipo,
+                            "imagen-comparacion-real"
+                        )}
+
+                    </div>
+
+
                     <div
                         class="nombre-equipo-comparacion"
                     >
@@ -1124,9 +1256,7 @@ function obtenerValoresUnicos(
 function crearFiltros() {
 
 
-    /* =====================================
-       MARCA
-    ===================================== */
+    /* MARCA */
 
     const marcas =
         obtenerValoresUnicos(
@@ -1142,9 +1272,7 @@ function crearFiltros() {
     );
 
 
-    /* =====================================
-       RAM
-    ===================================== */
+    /* RAM */
 
     const ram =
         obtenerValoresUnicos(
@@ -1160,9 +1288,7 @@ function crearFiltros() {
     );
 
 
-    /* =====================================
-       MEMORIA
-    ===================================== */
+    /* MEMORIA */
 
     const memorias =
         obtenerValoresUnicos(
@@ -1272,8 +1398,6 @@ function actualizarTextoFiltros() {
         obtenerSeleccionados("memoria");
 
 
-    /* MARCA */
-
     if (
         marcasSeleccionadas.length === 0
     ) {
@@ -1290,8 +1414,6 @@ function actualizarTextoFiltros() {
 
     }
 
-
-    /* RAM */
 
     if (
         ramSeleccionada.length === 0
@@ -1310,8 +1432,6 @@ function actualizarTextoFiltros() {
     }
 
 
-    /* MEMORIA */
-
     if (
         memoriasSeleccionadas.length === 0
     ) {
@@ -1328,8 +1448,6 @@ function actualizarTextoFiltros() {
 
     }
 
-
-    /* ESTADO VISUAL */
 
     actualizarEstadoFiltro(
         contenedorFiltroMarca,
@@ -1426,8 +1544,6 @@ function aplicarFiltros() {
                     ).toLowerCase();
 
 
-                /* BÚSQUEDA */
-
                 const coincideBusqueda =
 
                     texto === "" ||
@@ -1441,8 +1557,6 @@ function aplicarFiltros() {
                     );
 
 
-                /* MARCA */
-
                 const coincideMarca =
 
                     marcasSeleccionadas.length === 0 ||
@@ -1452,8 +1566,6 @@ function aplicarFiltros() {
                     );
 
 
-                /* RAM */
-
                 const coincideRam =
 
                     ramSeleccionada.length === 0 ||
@@ -1462,8 +1574,6 @@ function aplicarFiltros() {
                         equipo.RAM
                     );
 
-
-                /* MEMORIA */
 
                 const coincideMemoria =
 
@@ -1588,8 +1698,6 @@ function configurarDropdown(
 }
 
 
-/* CONFIGURAR MARCA */
-
 configurarDropdown(
     btnFiltroMarca,
     menuFiltroMarca,
@@ -1597,16 +1705,12 @@ configurarDropdown(
 );
 
 
-/* CONFIGURAR RAM */
-
 configurarDropdown(
     btnFiltroRam,
     menuFiltroRam,
     contenedorFiltroRam
 );
 
-
-/* CONFIGURAR MEMORIA */
 
 configurarDropdown(
     btnFiltroMemoria,
@@ -1771,13 +1875,8 @@ btnLimpiarFiltros.addEventListener(
     "click",
     () => {
 
-
-        /* BUSCADOR */
-
         busqueda.value = "";
 
-
-        /* CHECKBOXES */
 
         document
             .querySelectorAll(
@@ -1793,8 +1892,6 @@ btnLimpiarFiltros.addEventListener(
             );
 
 
-        /* TEXTOS */
-
         textoFiltroMarca.textContent =
             "Todas las marcas";
 
@@ -1806,8 +1903,6 @@ btnLimpiarFiltros.addEventListener(
         textoFiltroMemoria.textContent =
             "Toda la memoria";
 
-
-        /* ESTADO */
 
         contenedorFiltroMarca
             .classList.remove(
@@ -1826,8 +1921,6 @@ btnLimpiarFiltros.addEventListener(
                 "activo"
             );
 
-
-        /* MOSTRAR TODO */
 
         mostrarEquipos(
             equipos
@@ -1866,6 +1959,59 @@ function abrirFicha(
         equipo[
             "URL INFORMATE"
         ];
+
+
+    /* =====================================
+       INSERTAR IMAGEN EN LA FICHA
+    ===================================== */
+
+    let contenedorImagen =
+        document.getElementById(
+            "imagenFicha"
+        );
+
+
+    if (!contenedorImagen) {
+
+        contenedorImagen =
+            document.createElement(
+                "div"
+            );
+
+
+        contenedorImagen.id =
+            "imagenFicha";
+
+
+        contenedorImagen.className =
+            "imagen-ficha";
+
+
+        const modalContenido =
+            modalEquipo.querySelector(
+                ".modal-contenido"
+            );
+
+
+        const modalHeader =
+            modalContenido.querySelector(
+                ".modal-header"
+            );
+
+
+        modalContenido.insertBefore(
+            contenedorImagen,
+            modalHeader
+        );
+
+    }
+
+
+    contenedorImagen.innerHTML =
+        generarImagenEquipo(
+            equipo,
+            "imagen-ficha-real"
+        );
 
 
     const campos = [

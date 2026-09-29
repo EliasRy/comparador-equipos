@@ -628,8 +628,33 @@ main {
 
     border-bottom:
         1px solid #e8eaed;
+
+    overflow: hidden;
 }
 
+
+/* =========================================
+   IMAGEN REAL DEL EQUIPO
+========================================= */
+
+.imagen-equipo img.imagen-real {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    padding: 18px;
+
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
 
 .imagen-placeholder {
 
