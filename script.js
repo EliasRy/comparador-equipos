@@ -1090,7 +1090,7 @@ function mostrarComparacion() {
                     <tr>
 
                         <th>
-                            Característica
+                            Equipos
                         </th>
 
                         ${columnasEquipos}
