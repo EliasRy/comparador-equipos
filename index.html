@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Comparador de Equipos</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =====================================
+         ENCABEZADO
+    ====================================== -->
+
+    <header>
+
+        <div class="encabezado-contenido">
+
+            <h1>
+                Comparador de Equipos
+            </h1>
+
+            <p>
+                Consulta, filtra y compara las características
+                de los equipos disponibles.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         CONTENIDO PRINCIPAL
+    ====================================== -->
+
+    <main>
+
+        <!-- =================================
+             VISTA DE EQUIPOS
+        ================================== -->
+
+        <section id="vistaEquipos">
+
+
+            <!-- =================================
+                 FILTROS
+            ================================== -->
+
+            <section class="filtros">
+
+
+                <!-- BUSCADOR -->
+
+                <div class="filtro-busqueda">
+
+                    <label for="busqueda">
+                        Buscar equipo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="busqueda"
+                        placeholder="Buscar por marca o modelo..."
+                    >
+
+                </div>
+
+
+                <!-- =================================
+                     MARCA
+                ================================== -->
+
+                <div class="filtro">
+
+                    <label>
+                        Marca
+                    </label>
+
+                    <div
+                        class="filtro-multiple"
+                        id="contenedorFiltroMarca"
+                    >
+
+                        <button
+                            type="button"
+                            class="boton-filtro-multiple"
+                            id="btnFiltroMarca"
+                        >
+
+                            <span id="textoFiltroMarca">
+                                Todas las marcas
+                            </span>
+
+                            <span class="flecha-filtro">
+                                ▼
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            class="menu-filtro-multiple"
+                            id="menuFiltroMarca"
+                        >
+
+                            <div class="acciones-filtro">
+
+                                <button
+                                    type="button"
+                                    class="btn-seleccionar-todo"
+                                    data-filtro="marca"
+                                >
+                                    Todo
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn-limpiar-seleccion"
+                                    data-filtro="marca"
+                                >
+                                    Nada
+                                </button>
+
+                            </div>
+
+                            <div
+                                id="opcionesMarca"
+                                class="opciones-filtro"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     RAM
+                ================================== -->
+
+                <div class="filtro">
+
+                    <label>
+                        RAM
+                    </label>
+
+                    <div
+                        class="filtro-multiple"
+                        id="contenedorFiltroRam"
+                    >
+
+                        <button
+                            type="button"
+                            class="boton-filtro-multiple"
+                            id="btnFiltroRam"
+                        >
+
+                            <span id="textoFiltroRam">
+                                Toda la RAM
+                            </span>
+
+                            <span class="flecha-filtro">
+                                ▼
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            class="menu-filtro-multiple"
+                            id="menuFiltroRam"
+                        >
+
+                            <div class="acciones-filtro">
+
+                                <button
+                                    type="button"
+                                    class="btn-seleccionar-todo"
+                                    data-filtro="ram"
+                                >
+                                    Todo
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn-limpiar-seleccion"
+                                    data-filtro="ram"
+                                >
+                                    Nada
+                                </button>
+
+                            </div>
+
+                            <div
+                                id="opcionesRam"
+                                class="opciones-filtro"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     MEMORIA
+                ================================== -->
+
+                <div class="filtro">
+
+                    <label>
+                        Memoria
+                    </label>
+
+                    <div
+                        class="filtro-multiple"
+                        id="contenedorFiltroMemoria"
+                    >
+
+                        <button
+                            type="button"
+                            class="boton-filtro-multiple"
+                            id="btnFiltroMemoria"
+                        >
+
+                            <span id="textoFiltroMemoria">
+                                Toda la memoria
+                            </span>
+
+                            <span class="flecha-filtro">
+                                ▼
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            class="menu-filtro-multiple"
+                            id="menuFiltroMemoria"
+                        >
+
+                            <div class="acciones-filtro">
+
+                                <button
+                                    type="button"
+                                    class="btn-seleccionar-todo"
+                                    data-filtro="memoria"
+                                >
+                                    Todo
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn-limpiar-seleccion"
+                                    data-filtro="memoria"
+                                >
+                                    Nada
+                                </button>
+
+                            </div>
+
+                            <div
+                                id="opcionesMemoria"
+                                class="opciones-filtro"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LIMPIAR TODOS -->
+
+                <button
+                    id="btnLimpiarFiltros"
+                    class="btn-limpiar"
+                >
+
+                    Limpiar filtros
+
+                </button>
+
+
+            </section>
+
+
+            <!-- =================================
+                 CONTADOR
+            ================================== -->
+
+            <div
+                id="contadorResultados"
+                class="contador-resultados"
+            >
+                Cargando equipos...
+            </div>
+
+
+            <!-- =================================
+                 BARRA COMPARACIÓN
+            ================================== -->
+
+            <section class="barra-comparacion">
+
+                <div class="contador">
+
+                    <span>
+                        Equipos seleccionados:
+                    </span>
+
+                    <strong id="contadorComparacion">
+                        0/3
+                    </strong>
+
+                </div>
+
+
+                <button
+                    id="btnComparar"
+                    disabled
+                >
+
+                    Comparar equipos
+
+                </button>
+
+            </section>
+
+
+            <!-- =================================
+                 LISTA DE EQUIPOS
+            ================================== -->
+
+            <section id="listaEquipos"></section>
+
+
+        </section>
+
+
+        <!-- =================================
+             VISTA DE COMPARACIÓN
+        ================================== -->
+
+        <section
+            id="vistaComparacion"
+            class="vista-comparacion"
+        >
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         MODAL FICHA DEL EQUIPO
+    ====================================== -->
+
+    <div
+        id="modalEquipo"
+        class="modal"
+    >
+
+        <div class="modal-contenido">
+
+
+            <!-- CABECERA -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-etiqueta">
+                        FICHA DEL EQUIPO
+                    </span>
+
+                    <h2 id="modalTitulo">
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="btnCerrarModal"
+                    class="btn-cerrar-modal"
+                >
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <!-- DETALLES -->
+
+            <div
+                id="modalDetalles"
+                class="modal-detalles"
+            >
+            </div>
+
+
+            <!-- ACCIONES -->
+
+            <div class="modal-acciones">
+
+                <a
+                    id="modalInformate"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-modal-informate"
+                >
+
+                    🔎 Ver información oficial
+
+                </a>
+
+
+                <button
+                    id="btnCerrarModalInferior"
+                    class="btn-modal-cerrar"
+                >
+
+                    Cerrar
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1652 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    background: #f5f6f8;
+
+    color: #333;
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+header {
+    background: #08285F;
+
+    color: white;
+
+    padding: 30px 20px;
+}
+
+.encabezado-contenido {
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+header h1 {
+    margin: 0 0 10px;
+
+    font-size: 32px;
+}
+
+header p {
+    margin: 0;
+
+    font-size: 16px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+main {
+    max-width: 1200px;
+
+    margin: 30px auto;
+
+    padding: 0 20px;
+}
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
+.filtros {
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr
+        auto;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e5e9;
+
+    box-shadow:
+        0 3px 10px
+        rgba(0, 0, 0, 0.05);
+}
+
+
+.filtro,
+.filtro-busqueda {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.filtro label,
+.filtro-busqueda label {
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #08285F;
+}
+
+
+.filtro-busqueda input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid #d5d9de;
+
+    border-radius: 8px;
+
+    background: white;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.filtro-busqueda input:focus {
+
+    border-color: #08285F;
+}
+
+
+/* =========================================
+   FILTROS MÚLTIPLES
+========================================= */
+
+.filtro-multiple {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+.boton-filtro-multiple {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding:
+        0
+        12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: white;
+
+    border:
+        1px solid #d5d9de;
+
+    border-radius: 8px;
+
+    color: #333;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: 0.2s;
+}
+
+
+.boton-filtro-multiple:hover {
+
+    border-color: #08285F;
+}
+
+
+.flecha-filtro {
+
+    color: #08285F;
+
+    font-size: 11px;
+
+    transition: 0.2s;
+}
+
+
+.menu-filtro-multiple {
+
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% + 6px);
+
+    left: 0;
+
+    width: 100%;
+
+    max-height: 270px;
+
+    overflow-y: auto;
+
+    padding: 8px;
+
+    background: white;
+
+    border:
+        1px solid #d5d9de;
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(0, 0, 0, 0.14);
+
+    z-index: 500;
+}
+
+
+.menu-filtro-multiple.mostrar {
+
+    display: block;
+}
+
+
+/* =========================================
+   BOTONES TODO / NADA
+========================================= */
+
+.acciones-filtro {
+
+    display: flex;
+
+    gap: 6px;
+
+    padding-bottom: 7px;
+
+    margin-bottom: 5px;
+
+    border-bottom:
+        1px solid #e8eaed;
+}
+
+
+.acciones-filtro button {
+
+    flex: 1;
+
+    padding:
+        7px
+        8px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.btn-seleccionar-todo {
+
+    background: #08285F;
+
+    color: white;
+
+    border:
+        1px solid #08285F;
+}
+
+
+.btn-seleccionar-todo:hover {
+
+    background: #061f49;
+}
+
+
+.btn-limpiar-seleccion {
+
+    background: white;
+
+    color: #08285F;
+
+    border:
+        1px solid #d5d9de;
+}
+
+
+.btn-limpiar-seleccion:hover {
+
+    border-color: #F16A2A;
+
+    color: #F16A2A;
+}
+
+
+/* =========================================
+   OPCIONES DEL FILTRO
+========================================= */
+
+.opciones-filtro {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+
+.opcion-filtro {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        9px
+        8px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    color: #333;
+
+    font-size: 13px;
+
+    transition: 0.15s;
+}
+
+
+.opcion-filtro:hover {
+
+    background: #f5f6f8;
+}
+
+
+.opcion-filtro input {
+
+    width: 16px;
+
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: #F16A2A;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+.opcion-filtro span {
+
+    flex: 1;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   ESTADO FILTRO ACTIVO
+========================================= */
+
+.filtro-multiple.activo
+.boton-filtro-multiple {
+
+    border-color: #F16A2A;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(241, 106, 42, 0.08);
+}
+
+
+/* =========================================
+   BOTÓN LIMPIAR
+========================================= */
+
+.btn-limpiar {
+
+    align-self: end;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border:
+        1px solid #08285F;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #08285F;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.btn-limpiar:hover {
+
+    background: #08285F;
+
+    color: white;
+}
+
+
+/* =========================================
+   CONTADOR DE RESULTADOS
+========================================= */
+
+.contador-resultados {
+
+    margin:
+        0
+        0
+        12px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #08285F;
+}
+
+
+/* =========================================
+   BARRA DE COMPARACIÓN
+========================================= */
+
+.barra-comparacion {
+
+    background: white;
+
+    padding:
+        15px
+        20px;
+
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border:
+        1px solid #e2e5e9;
+
+    box-shadow:
+        0 3px 10px
+        rgba(0, 0, 0, 0.05);
+}
+
+
+.contador {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.barra-comparacion strong {
+
+    color: #08285F;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   BOTÓN COMPARAR
+========================================= */
+
+#btnComparar {
+
+    background: #08285F;
+
+    color: white;
+
+    border: none;
+
+    padding:
+        11px
+        20px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+#btnComparar:hover:not(:disabled) {
+
+    background: #061f49;
+}
+
+
+#btnComparar:disabled {
+
+    background: #bfc3c8;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   LISTA DE EQUIPOS
+========================================= */
+
+#listaEquipos {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   TARJETA PROFESIONAL
+========================================= */
+
+.tarjeta-equipo {
+
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #e1e4e8;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.tarjeta-equipo:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   ESPACIO PARA IMAGEN
+========================================= */
+
+.imagen-equipo {
+
+    width: 100%;
+
+    height: 210px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8f9fb,
+            #eef1f5
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-bottom:
+        1px solid #e8eaed;
+}
+
+
+.imagen-placeholder {
+
+    width: 150px;
+
+    height: 150px;
+
+    border:
+        2px dashed #cbd0d7;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: #9aa1aa;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   INFORMACIÓN DEL EQUIPO
+========================================= */
+
+.informacion-equipo {
+
+    padding: 20px;
+}
+
+
+/* MARCA */
+
+.marca-equipo {
+
+    display: inline-block;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    color: #F16A2A;
+
+    margin-bottom: 7px;
+}
+
+
+/* MODELO */
+
+.tarjeta-equipo h2 {
+
+    color: #08285F;
+
+    font-size: 18px;
+
+    line-height: 1.35;
+
+    margin:
+        0
+        0
+        18px;
+}
+
+
+/* =========================================
+   CARACTERÍSTICAS DESTACADAS
+========================================= */
+
+.caracteristicas-destacadas {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+}
+
+
+.caracteristica {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 10px;
+
+    background: #f7f8fa;
+
+    border-radius: 9px;
+
+    border:
+        1px solid #edf0f2;
+}
+
+
+.icono-caracteristica {
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    color: #8a919b;
+
+    letter-spacing: 0.5px;
+}
+
+
+.caracteristica strong {
+
+    font-size: 13px;
+
+    color: #08285F;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   PROCESADOR
+========================================= */
+
+.procesador-equipo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding:
+        12px
+        0;
+
+    margin-bottom: 5px;
+
+    border-top:
+        1px solid #edf0f2;
+}
+
+
+.procesador-equipo span {
+
+    font-size: 11px;
+
+    color: #8a919b;
+
+    font-weight: bold;
+}
+
+
+.procesador-equipo strong {
+
+    font-size: 13px;
+
+    color: #444;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   ACCIONES DE LA TARJETA
+========================================= */
+
+.acciones-equipo {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* =========================================
+   BOTÓN FICHA
+========================================= */
+
+.btn-ficha {
+
+    display: block;
+
+    width: 100%;
+
+    padding: 11px;
+
+    background: #08285F;
+
+    color: white;
+
+    text-align: center;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.btn-ficha:hover {
+
+    background: #061f49;
+}
+
+
+/* =========================================
+   BOTÓN INFORMATE
+========================================= */
+
+.btn-informacion {
+
+    display: block;
+
+    width: 100%;
+
+    padding: 11px;
+
+    background: #F16A2A;
+
+    color: white;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+.btn-informacion:hover {
+
+    background: #d9571d;
+}
+
+
+/* =========================================
+   COMPARAR
+========================================= */
+
+.selector-comparar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 9px;
+
+    border:
+        1px solid #d9dde3;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: #08285F;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    background: #fafbfc;
+
+    transition: 0.2s;
+}
+
+
+.selector-comparar:hover {
+
+    border-color: #F16A2A;
+
+    background: #fff8f4;
+}
+
+
+.selector-comparar input {
+
+    width: 17px;
+
+    height: 17px;
+
+    accent-color: #F16A2A;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   SIN RESULTADOS
+========================================= */
+
+.mensaje-sin-resultados {
+
+    grid-column: 1 / -1;
+
+    background: white;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #666;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+
+.modal.activo {
+
+    display: flex;
+}
+
+
+/* =========================================
+   CONTENIDO MODAL
+========================================= */
+
+.modal-contenido {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0, 0, 0, 0.25);
+
+    animation:
+        aparecerModal 0.2s ease;
+}
+
+
+@keyframes aparecerModal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   CABECERA MODAL
+========================================= */
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding:
+        25px
+        28px;
+
+    background: #08285F;
+
+    color: white;
+}
+
+
+.modal-etiqueta {
+
+    display: inline-block;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    opacity: 0.8;
+
+    margin-bottom: 7px;
+}
+
+
+.modal-header h2 {
+
+    margin: 0;
+
+    font-size: 24px;
+
+    line-height: 1.3;
+}
+
+
+/* CERRAR */
+
+.btn-cerrar-modal {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.btn-cerrar-modal:hover {
+
+    background:
+        rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================
+   DETALLES MODAL
+========================================= */
+
+.modal-detalles {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 0;
+
+    padding:
+        10px
+        25px
+        20px;
+}
+
+
+.detalle-item {
+
+    padding:
+        15px
+        10px;
+
+    border-bottom:
+        1px solid #e8eaed;
+}
+
+
+.detalle-item:nth-child(odd) {
+
+    border-right:
+        1px solid #e8eaed;
+}
+
+
+.detalle-nombre {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    color: #08285F;
+
+    text-transform: uppercase;
+}
+
+
+.detalle-valor {
+
+    display: block;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    color: #444;
+
+    white-space: pre-line;
+}
+
+
+/* =========================================
+   ACCIONES MODAL
+========================================= */
+
+.modal-acciones {
+
+    display: flex;
+
+    gap: 10px;
+
+    padding:
+        20px
+        25px
+        25px;
+
+    border-top:
+        1px solid #e5e7eb;
+}
+
+
+.btn-modal-informate {
+
+    flex: 1;
+
+    padding: 12px;
+
+    background: #F16A2A;
+
+    color: white;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+
+.btn-modal-informate:hover {
+
+    background: #d9571d;
+}
+
+
+.btn-modal-cerrar {
+
+    padding:
+        12px
+        22px;
+
+    background: white;
+
+    color: #08285F;
+
+    border:
+        1px solid #08285F;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.btn-modal-cerrar:hover {
+
+    background: #08285F;
+
+    color: white;
+}
+
+
+/* =========================================
+   VISTA COMPARACIÓN
+========================================= */
+
+.vista-comparacion {
+
+    display: none;
+}
+
+
+/* =========================================
+   ENCABEZADO COMPARACIÓN
+========================================= */
+
+.encabezado-comparacion {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.encabezado-comparacion h2 {
+
+    margin: 0;
+
+    color: #08285F;
+}
+
+
+.encabezado-comparacion p {
+
+    color: #666;
+
+    margin:
+        7px
+        0
+        0;
+}
+
+
+/* =========================================
+   BOTÓN VOLVER
+========================================= */
+
+.btn-volver {
+
+    background: white;
+
+    color: #08285F;
+
+    border:
+        1px solid #d5d9de;
+
+    padding:
+        10px
+        18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+
+.btn-volver:hover {
+
+    border-color: #F16A2A;
+}
+
+
+/* =========================================
+   TABLA COMPARACIÓN
+========================================= */
+
+.tabla-comparacion-contenedor {
+
+    background: white;
+
+    border-radius: 14px;
+
+    overflow-x: auto;
+
+    border:
+        1px solid #e1e4e8;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+.tabla-comparacion {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 700px;
+}
+
+
+.tabla-comparacion thead {
+
+    background: #08285F;
+
+    color: white;
+}
+
+
+.tabla-comparacion th {
+
+    padding:
+        18px
+        15px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    border-right:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+}
+
+
+.tabla-comparacion th:first-child {
+
+    text-align: left;
+
+    width: 180px;
+}
+
+
+.tabla-comparacion td {
+
+    padding: 15px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    border-right:
+        1px solid #e5e7eb;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    font-size: 14px;
+
+    white-space: pre-line;
+}
+
+
+.tabla-comparacion td:first-child {
+
+    text-align: left;
+
+    font-weight: bold;
+
+    color: #08285F;
+
+    background: #f7f8fa;
+}
+
+
+.tabla-comparacion tbody tr:nth-child(even) td {
+
+    background: #fafbfc;
+}
+
+
+.tabla-comparacion tbody tr:nth-child(even) td:first-child {
+
+    background: #f1f3f6;
+}
+
+
+.nombre-equipo-comparacion {
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    line-height: 1.3;
+}
+
+
+.btn-informacion-comparacion {
+
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding:
+        7px
+        12px;
+
+    background: #F16A2A;
+
+    color: white;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.btn-informacion-comparacion:hover {
+
+    background: #d9571d;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    #listaEquipos {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .filtros {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    main {
+
+        padding:
+            0
+            12px;
+    }
+
+
+    #listaEquipos {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .filtros {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .btn-limpiar {
+
+        width: 100%;
+    }
+
+
+    .barra-comparacion {
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        align-items: stretch;
+    }
+
+
+    #btnComparar {
+
+        width: 100%;
+    }
+
+
+    .encabezado-comparacion {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 12px;
+    }
+
+
+    .btn-volver {
+
+        width: 100%;
+    }
+
+
+    .modal-detalles {
+
+        grid-template-columns:
+            1fr;
+
+        padding:
+            10px
+            18px
+            20px;
+    }
+
+
+    .detalle-item:nth-child(odd) {
+
+        border-right: none;
+    }
+
+
+    .modal-header {
+
+        padding:
+            20px;
+    }
+
+
+    .modal-header h2 {
+
+        font-size: 20px;
+    }
+
+
+    .modal-acciones {
+
+        flex-direction: column;
+
+        padding:
+            18px;
+    }
+
+}
